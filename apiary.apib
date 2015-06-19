@@ -1,0 +1,104 @@
+FORMAT: 1A
+HOST: http://myecg.pw/api
+
+# TinyWebDB
+
+TinyWebDB Service API allowing App Inventor's TinyWebDB component to store and retrieve information.
+
+# TinyWebDB API Root [/]
+
+This resource does not have any attributes. Instead it offers the initial
+API affordances in the form of the links in the JSON body.
+
+## Retrieve the Entry Point
+
+A API Root object has the following attributes:
+
++ status - service status
++ tinywebdb_api_version - service api version.
++ controllers  - An array of controllers.
+
+### View Entry Point Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status":"ok",
+            "tinywebdb_api_version":"0.2.1",
+            "controllers":["getvalue","storeavalue"]
+        }
+
+
+## Get Value [/getvalue/{tag}]
+
+Sends a request to the Web service to get the value stored under the given tag. The Web service must decide what to return if there is no value stored under the tag. This component accepts whatever is returned.
+A Get Value object has the following attributes:
+
++ VALUE
++ tag
++ value - value stored under the given tag.
+
++ Parameters
+    + getvalue
+    + tag
+
+### Get Value Detail [GET]
+
++ Response 200 (application/json)
+
+        [
+            "VALUE",
+            "",
+            {
+                "ID":243,
+                "post_author":"0",
+                "post_date":"2015-06-18 13:35:40",
+                "post_date_gmt":"2015-06-18 05:35:40",
+                "post_content":"\"ECG_Head, ECG_Data\"",
+                "post_title":"1434605731593",
+                "post_excerpt":"",
+                "post_status":"publish",
+                "comment_status":"open",
+                "ping_status":"open",
+                "post_password":"",
+                "post_name":"1434605731593",
+                "to_ping":"",
+                "pinged":"",
+                "post_modified":"2015-06-18 13:35:40",
+                "post_modified_gmt":"2015-06-18 05:35:40",
+                "post_content_filtered":"","post_parent":0,
+                "guid":"http:\/\/myecg.pw\/2015\/06\/18\/1434605731593\/",
+                "menu_order":0,
+                "post_type":"post",
+                "post_mime_type":"",
+                "comment_count":"0",
+                "filter":"raw"
+            }
+        ]
+
+## Store A Value [/storeavalue/{tag}/{value}]
+
+Sends a request to the Web service to store the given value under the given tag.
+
+A Store A Value object has the following attributes:
+
++ STORED
++ tag
++ value - value to stored under the given tag.
+
++ Parameters
+    + storeavalue
+    + tag
+    + value
+
+### Store A Value Detail [POST]
+
++ Response 200 (application/json)
+
+
+        [
+            "STORED",
+            "1434605731593",
+            ""
+        ]
+
